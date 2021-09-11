@@ -1,0 +1,15 @@
+{% extends 'utilisateurs.html.twig' %}
+
+{% block title %}Modification des competences de {{ app.user.prenom }} {{ app.user.nom }}{% endblock %}
+
+{% block body %}
+	<div class="grix xs4 container">
+		<div class="col-xs4">
+			<h1>Modification du profil de {{ app.user.prenom }} {{ app.user.nom }}</h1>
+			{% form_theme form 'foundation_5_layout.html.twig' %}
+			{{ form(form) }}
+
+		</div>
+        
+	</div>
+{% endblock %}

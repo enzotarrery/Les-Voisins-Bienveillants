@@ -1,0 +1,170 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ parent() }} - Accueil {% endblock %}
+
+{% block body %}
+    <div id="header">
+        <nav>
+            <a id="logo_link" href="http://bullylesmines.fr/"><img id="logo" src="{{ asset('img/Logo-de-Bully-les-Mines.png') }}" alt="logo"></a>
+            <ul>
+                {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                    <li>
+                        <p>Bonjour <em>{{ app.user.nom }} {{ app.user.prenom }}</em>.</p>
+                        <a href="{{ path('profil') }}">Mon profil</a>
+                        <a href="{{ path('app_logout') }}">Déconnexion</a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{{ path('app_login') }}">Connexion</a>
+                        <a href="{{ path('homepage') }}">Inscription</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+
+            {% for flashSuccess in app.flashes('success_inscription') %}
+                <div style="font-size: 3rem;" class="alert alert-success" role="alert">{{ flashSuccess }}</div>
+            {% endfor %}
+        <header>
+            <h1>Les voisins bienveillants</h1>
+            <p>Venons en aide à celles et ceux dans le besoin.</p>
+        </header>
+        <footer>
+            <a href="#options">
+                <span id="button">
+                    <div class="icon-down-big"></div>
+                </span>
+            </a>
+        </footer>
+    </div>
+    <main>
+        <section id="options">
+            <ul>
+                {% for i in 1..6 %}
+                    <li>
+                        <div><img src="{{ asset('img/0' ~ i ~ '.jpg') }}" alt="Image n°{{ i }}"></div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+        <section id="inscription">
+            <div class="container">
+                <h2>Formulaire d'inscription</h2>
+                {% for field in registrationForm %}
+                {% if form_errors(field) is not empty %}
+                <h3 style="color: orange">{{form_errors(field)}}</h3>
+                {% endif %}
+                {% endfor %}
+                {{ form_start(registrationForm) }}
+
+                <div>
+
+
+                    <div class="input-wrapper">
+                        {{ form_label(registrationForm.email,'Adresse mail') }}
+                        {{ form_widget(registrationForm.email, { 'attr': {'class': 'form-control'} }) }}
+                    </div>
+                    <div class="input-wrapper">
+                        {{ form_label(registrationForm.plainPassword,'Mot de passe') }}
+                        {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control'} }) }}
+                    </div>
+                    <div class="input-wrapper">
+                        {{ form_label(registrationForm.nom,'Nom') }}
+                        {{ form_widget(registrationForm.nom, { 'attr': {'class': 'form-control'} }) }}
+                    </div>
+                    <div class="input-wrapper">
+                        {{ form_label(registrationForm.prenom,'Prénom') }}
+                        {{ form_widget(registrationForm.prenom, { 'attr': {'class': 'form-control'} }) }}
+                    </div>
+                    <div class="input-wrapper">
+                        {{ form_label(registrationForm.civilite,'Civilité') }}
+                        {{ form_widget(registrationForm.civilite, {'attr':{'class':'form-select' } }) }}
+                    </div>
+                    <div class="input-wrapper">
+                        {{ form_label(registrationForm.dateNaissance, 'Date de naissance') }}
+                        {{ form_widget(registrationForm.dateNaissance) }}
+                    </div>
+                    <div class="input-wrapper">
+                        {{ form_label(registrationForm.telephone,'Téléphone') }}
+                        {{ form_widget(registrationForm.telephone, { 'attr': {'class': 'form-control'} }) }}
+                    </div>
+                    <div class="input-wrapper">
+                        {{ form_label(registrationForm.adresse,'Adresse') }}
+                        {{ form_widget(registrationForm.adresse, { 'attr': {'class': 'form-control'} }) }}
+                    </div>
+                    <div class="input-wrapper">
+                        {{ form_label(registrationForm.quartier,'Quartier') }}
+                        {{ form_widget(registrationForm.quartier, { 'attr': {'class': 'form-select'} }) }}
+                    </div>
+                    <div class="input-wrapper">
+                        {{ form_label(registrationForm.typeBenevolat,'Type de bénévolat') }}
+                        {{ form_widget(registrationForm.typeBenevolat, { 'attr': {'class': 'form-select'} }) }}
+                    </div>
+
+                </div>
+
+                <div class="textarea">
+                    {{ form_label(registrationForm.motivation,'Motivation') }}
+                    {{ form_widget(registrationForm.motivation, { 'attr': {'class': 'form-control'} }) }}
+                </div>
+                <h3>Disponibilités pour :</h3>
+                {% for tache in registrationForm.taches|filter(tache => not tache.rendered) %}
+                    <div class="form-check-inline">
+                        {{ form_label(tache,tache.vars.label, { 'label_attr': {'class': 'form-check-label'} })}}
+                        {{ form_widget(tache, { 'attr': {'class': 'form-check-input'} }) }}
+                    </div>
+                {% endfor %}
+
+
+                <!--<label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" value="">
+                    Promenade
+                </label>
+            </div>
+            <div class="form-check-inline">
+                <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" value="">
+                    Faire les courses
+                </label>
+            </div>
+            <div class="form-check-inline">
+                <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" value="">
+                    Visite / jeux
+                </label>
+            </div>
+            <div class="form-check-inline">
+                <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" value="">
+                    Appels téléphoniques
+                </label>-->
+
+
+                <input type="submit" class="btn btn-primary" value="Envoyer">
+
+
+                <div>
+                    {% set charte %}
+                        <a target="_blank" href="{{ path('charte')  }}" style="color:white; font-weight: bold">la charte</a>
+                    {% endset %}
+                    {% set confidentialite %}
+                        <a target="_blank" href="{{ path('conditions') }}" style="color:white; font-weight: bold">la politique de confidentialité.</a>
+                    {% endset %}
+
+                    <label for="registration_form_agreeTerms"> J'ai pris connaissance et j'accepte {{ charte }}  ainsi que {{confidentialite}}  </label>
+
+                    {{ form_widget(registrationForm.agreeTerms, {
+                        'attr' : {'class':'form-check-input'}
+                    }) }}
+                </div>
+
+                {{ form_end(registrationForm) }}
+            </div>
+
+        </section>
+
+    </main>
+    <footer>
+
+    </footer>
+{% endblock %}

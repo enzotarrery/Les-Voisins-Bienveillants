@@ -1,0 +1,77 @@
+{% extends 'utilisateurs.html.twig' %}
+
+
+
+{% block body %}
+
+   {# <h1 class="display-6">Les voisins bienveillants</h1>#}
+
+    <main>
+        <div class="container">
+            {% for message in app.flashes('message') %}
+                <div class="col-xs4">
+                    <div class="p-3 my-2 rounded-2 success">{{message}}</div>
+                </div>
+            {% endfor %}
+
+
+            <div class="card">
+                <header class="card-header">
+                    <h1 class="card-title">Profil de {{ app.user.nom }} {{ app.user.prenom }}</h1>
+                </header>
+                <div class="card-body">
+                    <div class="list-group">
+                        <div class="list-group-item list-group-item-action">Nom : {{ app.user.prenom }}</div>
+                        <div class="list-group-item list-group-item-action">Prénom : {{ app.user.nom }} </div>
+                        <div class="list-group-item list-group-item-action">Email : {{ app.user.email }}</div>
+                        <div class="list-group-item list-group-item-action">Adresse : {{  app.user.adresse }}</div>
+                        <div class="list-group-item list-group-item-action">Quartier : {{ app.user.quartier }}</div>
+                        <div class="list-group-item list-group-item-action">Téléphone : {{ app.user.telephone }}</div>
+                       {# <div class="list-group-item list-group-item-action">Motivation : {{ app.user.motivation }}</div>
+                       #} </div>
+                </div>
+                <div>
+                    <a href="{{ path('profil_modifier')}}" class="btn blue">Modifier le profil</a>
+                    <a href="{{ path('profil_pass_modifier')}}" class="btn blue">Modifier le mot de passe</a>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+            <div class="container">
+                <div class="card">
+                    <header class="card-header">
+                        <h1 class="card-title">Mes compétences ({{ app.user.taches|length }})</h1>
+                    </header>
+
+                    <div class="card-body">
+                        <div class="list-group">
+                            {% for tache in  app.user.taches %}
+                                <div class="list-group-item list-group-item-action">{{ tache.nom }}</div>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                    <div>
+                    <a href="{{ path('profil_competence')}}" class="btn blue">Modifier les compétences</a>
+
+
+                    </div>
+                </div>
+                <a href="{{ path('profil_donnees')}}" class="btn grey">Voir mes données personnelles (RGPD)</a>
+            </div>
+
+
+    </main>
+
+    <footer>
+
+    </footer>
+
+{% endblock  %}

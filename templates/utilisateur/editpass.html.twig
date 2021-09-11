@@ -1,0 +1,22 @@
+{% extends 'utilisateurs.html.twig' %}
+
+{% block title %}Modification du mot de passe de {{ app.user.prenom }} {{ app.user.nom }}{% endblock %}
+
+{% block body %}
+<div class=" container">
+
+
+	<div class="card">
+		<header class="card-header">
+
+		</header>
+		<div class="card-body">
+			<h1 class="card-title">Modification du mot de passe de {{ app.user.prenom }} {{ app.user.nom }}</h1>
+
+			{{ form(form) }}
+
+		</div>
+
+	</div>
+</div>
+{% endblock %}

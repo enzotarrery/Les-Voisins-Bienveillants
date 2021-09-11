@@ -1,0 +1,339 @@
+/***** look.css *****/
+
+
+/***** général *****/
+html {
+    font-size: 62.5%; /*1rem = 10px*/
+    font-family: sans-serif;
+    scroll-behavior: smooth;
+    --couleur-symbole: rgb(226, 4, 97);
+    --couleur-symbole-2: rgb(192, 3, 82);
+    --couleur-background: rgba(201, 201, 201, 0.692);
+}
+
+i {
+    font-style: italic;
+}
+
+strong, em {
+    font-weight: bold;
+    color: var(--couleur-symbole);
+}
+
+u {
+    text-decoration: underline;
+}
+
+a {
+    color: var(--couleur-symbole);
+    text-decoration: none;
+    transition: 0.4s;
+}
+
+a:hover {
+    color: var(--couleur-symbole-2);
+}
+
+p {
+    font-family: Verdana;
+    font-size: 1rem;
+}
+
+/***** en-tête *****/
+#header {
+    background-image: url('../img/header.jpeg');
+    background-position: 65%;
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: center;
+}
+
+nav {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    top: 0;
+    width: 100%;
+}
+
+nav a, nav p {
+    font-size: 1.125rem;
+}
+
+nav p {
+    margin-bottom: 0;
+    font: inherit;
+}
+
+#logo_link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo {
+    width: 60%;
+    height: auto;
+}
+
+#body_login #logo_link {
+    background-color: white;
+}
+
+#body_login nav p {
+    color: white;
+}
+
+#header header {
+    width: 80vw;
+    background-color: white;
+}
+
+#header h1 {
+    font-size: 6.25vw;
+    font-weight: 400;
+    font-family: Georgia, sans-serif ;
+    display: inline-block;
+    color: var(--couleur-symbole);
+}
+
+#header header p {
+    font-family:'Lucida Sans';
+    font-size: 3.125vw;
+    color: rgb(100, 100, 100);
+}
+
+#body_login nav {
+    background-color: var(--couleur-symbole);
+}
+
+#body_login nav a, #body_login nav a:hover {
+    color: white;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+nav li {
+    display: flex;
+}
+
+nav li a:first-child, nav li p:first-child {
+    border-right: solid 1px #a0a0a0;
+}
+
+#button {
+    height: 4rem;
+    width: 4rem;
+    display: inline-block;
+    border-radius: 100%;
+    text-align: center;
+    background-color: white;
+}
+
+.icon-down-big {
+    font-size: 1.75rem;
+}
+
+/***** corps *****/
+
+section {
+    height: 100vh;
+}
+
+#options {
+    background-color: var(--couleur-symbole);
+}
+
+#options ul {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#options li {
+    flex-basis: 34%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#options li div {
+    width: 15rem;
+    height: 15rem;
+    background-color: white;
+    -moz-box-shadow: 0px 0px 20px 0px #999999;
+    -webkit-box-shadow: 0px 0px 20px 0px #999999;
+    -o-box-shadow: 0px 0px 20px 0px #999999;
+    box-shadow: 0px 0px 20px 0px #999999;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#999999, Direction=NaN, Strength=20);
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    transition: 0.4s ease-in-out;
+    cursor: pointer;
+}
+
+#options li div:hover {
+    -moz-box-shadow: 0px 0px 10px 0px #999999;
+    -webkit-box-shadow: 0px 0px 10px 0px #999999;
+    -o-box-shadow: 0px 0px 10px 0px #999999;
+    box-shadow: 0px 0px 10px 0px #999999;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#999999, Direction=NaN, Strength=10);
+}
+
+#options li div img {
+    width: 100%;
+    height: 100%;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+}
+
+#inscription {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#inscription form div:first-child {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#inscription form div:first-child .input-wrapper {
+    flex-basis: 48%;
+}
+
+form input[type="text"], form input[type="email"], form input[type="password"] {
+    font-size: 1rem;
+    color: white;
+    display: block;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: solid 2px white;
+}
+
+form textarea {
+    font-size: 1rem;
+    color: var(--couleur-symbole-2);
+}
+
+form input[type="text"]:focus, form input[type="email"]:focus, form input[type="password"]:focus {
+    border-bottom-color: var(--couleur-symbole-2);
+    color: var(--couleur-symbole-2);
+}
+
+form input[type="submit"] {
+    display: block;
+    height: 2.5rem;
+    width: 8rem;
+    color: var(--couleur-symbole);
+    background-color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+form input[type="submit"]:hover {
+    color: var(--couleur-symbole);
+    background-color: white;
+}
+
+form input[type="submit"]:focus {
+    color: white;
+    background-color: var(--couleur-symbole-2);
+}
+
+.container {
+    width: 80%;
+    background-color: var(--couleur-symbole);
+    color: white;
+    -moz-box-shadow: 0px 0px 20px 0px #cfcfcf;
+    -webkit-box-shadow: 0px 0px 20px 0px #cfcfcf;
+    -o-box-shadow: 0px 0px 20px 0px #cfcfcf;
+    box-shadow: 0px 0px 20px 0px #cfcfcf;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#cfcfcf, Direction=NaN, Strength=20);
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+}
+
+.container h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+#inscription h3 {
+    font-size: 1.5rem;
+}
+
+form label {
+    font-size: 1.125rem;
+}
+
+form label:not(:first-child) {
+    display: block;
+}
+
+form input[type="date"] {
+    color: var(--couleur-symbole-2);
+    width: 100%;
+    height: 22.5px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.form-select {
+    color: var(--couleur-symbole-2);
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+form input {
+    outline: none;
+}
+
+.form-check-input {
+    width: 1.5em;
+    height: 1.5em;
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+.form-check-input:checked {
+    background-color: var(--couleur-symbole-2);
+    border-color: var(--couleur-symbole-2);
+}
+
+#body_login {
+    height: 100vh;
+}
+
+#main_login {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/***** pied de page *****/

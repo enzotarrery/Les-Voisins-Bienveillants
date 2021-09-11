@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ parent() }} - Connexion{% endblock %}
+
+{% block body %}
+    <div id="body_login">
+        <nav>
+            <a id="logo_link" href="http://bullylesmines.fr/"><img src="{{ asset('img/Logo-de-Bully-les-Mines.png') }}" alt="logo"></a>
+            <ul>
+                {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                    <li>
+                        <p>Bonjour <em>{{ app.user.nom }} {{ app.user.prenom }}</em>.</p>
+                        <a href="{{ path('app_logout') }}">Déconnexion</a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{{ path('app_login') }}">Connexion</a>
+                        <a href="{{ path('homepage') ~ '#inscription' }}">Inscription</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+        <main id="main_login">
+            <div class="container">
+                <form method="post">
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+                    <h2>Connectez-vous</h2>
+                    <label for="email">E-mail :</label>
+                    <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp">
+                    <label for="password">Mot de passe :</label>
+                    <input type="password" name="password" class="form-control" id="password">
+
+                    <input type="hidden" name="_csrf_token"
+                           value="{{ csrf_token('authenticate') }}"
+                    >
+
+                    <input type="submit" class="btn btn-primary" value="Connexion">
+
+                </form>
+            </div>
+        </main>
+        <footer>
+
+        </footer>
+    </div>
+{% endblock %}

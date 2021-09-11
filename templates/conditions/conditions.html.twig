@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <title>{% block title %}Politique de confidentialité{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
+    {% endblock %}
+
+    <noscript>Veuillez activer les scripts pour une meilleure expérience sur le site.</noscript>
+</head>
+
+<body style="overflow: hidden">
+
+{% block body %}
+
+    <embed src="{{ asset('pdf/conditions.pdf') }}" style="height: 100vh; width: 100vw;" type='application/pdf' >
+
+{% endblock %}
+</body>
+
+

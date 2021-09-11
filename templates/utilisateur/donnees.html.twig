@@ -1,0 +1,53 @@
+{% extends 'utilisateurs.html.twig' %}
+
+{% block title %}Données personnelles de {{ app.user.nom }} {{ app.user.prenom }}{% endblock %}
+
+{% block body %}
+	<div class="card">
+		{% for message in app.flashes('message') %}
+			<div class="col-xs4">
+				<div class="p-3 my-2 rounded-2 success">{{message}}</div>
+			</div>
+		{% endfor %}
+
+
+
+		<header class="card-header">
+
+			<h1 class="card-title">Données personnelles de {{ app.user.prenom }} {{ app.user.nom }}</h1>
+			{# <a href="{{ path('homepage') }}" class="btn blue">Télécharger les données</a>
+			utilisateur_donnees_download #}
+
+		</header>
+		<div class="card-body">
+			<div class="list-group">
+				<div class="list-group-item list-group-item-action">Nom : {{ app.user.nom }}</div>
+
+				<div class="list-group-item list-group-item-action">Prénom : {{ app.user.prenom }} </div>
+
+				<div class="list-group-item list-group-item-action">Email : {{ app.user.email }}</div>
+
+				<div class="list-group-item list-group-item-action">Civilité : {{ app.user.civilite }}</div>
+
+				<div class="list-group-item list-group-item-action">Adresse : {{  app.user.adresse }}</div>
+
+				<div class="list-group-item list-group-item-action">Date de Naissance : {{  app.user.dateNaissance|date('d-m-Y ')  }}</div>
+
+				<div class="list-group-item list-group-item-action">Quartier : {{ app.user.quartier }}</div>
+
+				<div class="list-group-item list-group-item-action">Téléphone : {{ app.user.telephone }}</div>
+
+				<div class="list-group-item list-group-item-action">Motivation : {{ app.user.motivation }}</div>
+
+				<div class="list-group-item list-group-item-action">Type de Benevolat : {{ app.user.typeBenevolat }}</div>
+
+
+
+			</div>
+		</div>
+	</div>
+	<div>
+	<a href="{{ path('utilisateur_donnees_suppression')}}" class="btn blue">Supprimer mes données</a>
+	</div>
+
+{% endblock %}

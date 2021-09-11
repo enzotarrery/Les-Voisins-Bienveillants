@@ -1,0 +1,18 @@
+{% extends 'utilisateurs.html.twig' %}
+
+{% block title %}Modification du profil de {{ app.user.prenom }} {{ app.user.nom }}{% endblock %}
+
+{% block body %}
+	<div class=" container">
+		<div class="card">
+			<header class="card-header">
+			<h1 class="card-title">Modification du profil de {{ app.user.prenom }} {{ app.user.nom }}</h1>
+
+			</header>
+			<div class="card-body">
+				{{ form(form) }}
+			</div>
+		</div>
+        
+	</div>
+{% endblock %}
